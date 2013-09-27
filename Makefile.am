@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = po src tests doc apidoc
+SUBDIRS = po src tests
 
 EXTRA_DIST = \
     libreport.pc.in \
