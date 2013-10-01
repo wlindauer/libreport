@@ -81,6 +81,7 @@ AC_ARG_WITH(bugzilla,
 AS_HELP_STRING([--with-bugzilla],[use Bugzilla plugin (default is YES)]),
 LIBREPORT_PARSE_WITH([bugzilla]))
 
+XMLRPC_PACKAGES=
 if test -z "$NO_BUGZILLA"; then
 AM_CONDITIONAL(BUILD_BUGZILLA, true)
 AC_PATH_PROG([XMLRPC], [xmlrpc-c-config], [no])
@@ -101,6 +102,8 @@ XMLRPC_CLIENT_CFLAGS=`xmlrpc-c-config client --cflags 2> /dev/null`
 XMLRPC_CLIENT_LIBS=`xmlrpc-c-config client --libs 2> /dev/null`
 AC_SUBST(XMLRPC_CLIENT_CFLAGS)
 AC_SUBST(XMLRPC_CLIENT_LIBS)
+
+XMLRPC_PACKAGES="xmlrpc xmlrpc_client"
 
 # enable bugzilla & deps translations
 for FILE in `grep -e "#.*ugzilla.*" -e "#.*naconda.*" po/POTFILES.in`
@@ -127,6 +130,7 @@ do
   fi
 done
 fi dnl end NO_BUGZILLA
+AC_SUBST(XMLRPC_PACKAGES)
 
 AC_PATH_PROG([PYTHON_CONFIG], [python-config], [no])
 [if test "$PYTHON_CONFIG" = "no"]
