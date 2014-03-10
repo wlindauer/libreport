@@ -68,15 +68,6 @@ if test -z "$PYTHON3"; then
     exit 1
 fi
 
-AC_PATH_PROG([XMLTO], [xmlto], [no])
-[if test "$XMLTO" = "no"]
-[then]
-    [echo "The xmlto program was not found in the search path. Please ensure"]
-    [echo "that it is installed and its directory is included in the search path."]
-    [echo "Then run configure again before attempting to build libreport."]
-    [exit 1]
-[fi]
-
 AC_ARG_WITH(bugzilla,
 AS_HELP_STRING([--with-bugzilla],[use Bugzilla plugin (default is YES)]),
 LIBREPORT_PARSE_WITH([bugzilla]))
